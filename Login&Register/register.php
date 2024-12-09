@@ -28,14 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($consent == false) {
         echo "<script>alert('Cannot make account without consent');</script>";
-        exit;
     } elseif ($result->num_rows > 0) {
         echo "<script>alert('This username already exists, please enter a different one');</script>";
-        exit;
     } elseif (strlen($password) < 8 && $containCapital != true && $containNum != true) {
         echo "<script>alert('Password does not meet standards');</script>";
     } else {
-        $sql = "INSERT INTO AccountDB (username, password, consent) VALUES ('$name', '$hashed_password','$consent')";
+        $sql = "INSERT INTO AccountDB (username, password, consent) VALUES ('$username', '$hashed_password','$consent')";
         $conn->query($sql);
         echo "<script>alert('Account added successfully');</script>";
     }
