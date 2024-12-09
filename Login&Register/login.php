@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" id="username" name="username" required><br>
             <label for="password">Password</label><br>
             <input type="text" id="password" name="password" requred><br><br>
-            <input type="Submit" value="submit">Submit</input>
+            <input type="Submit" value="submit">
         </form>
         <div class="side" style="left: 5%;">
             <p>Already have an account?</p>
