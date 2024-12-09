@@ -47,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <div class="side" style="left: 5%;">
         <form method="post">
-            <label for="username"> Username</label><br>
+            <label for="username">Username</label><br>
             <input type="text" id="username" name="username" required><br>
-            <label for="password"> Password</label><br>
+            <label for="password">Password</label><br>
             <input type="text" id="password" name="password" requred><br><br>
             <input type="Submit" value="submit">Submit</input>
         </form>
