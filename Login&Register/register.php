@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (strlen($password) < 8 && $containCapital != true && $containNum != true) {
         echo "<script>alert('Password does not meet standards');</script>";
     } else {
-        $sql = "INSERT INTO AccountDB (username, password, consent) VALUES ('$username', '$hashed_password','$consent')";
+        $sql = "INSERT INTO AccountDB (username, password, consent) VALUES ('$username', '$hashed_password',true)";
         $conn->query($sql);
         echo "<script>alert('Account added successfully');</script>";
     }

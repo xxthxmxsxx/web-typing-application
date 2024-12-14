@@ -1,31 +1,62 @@
 .heading {
     width: 100%;
-    height: 65px,;
+    height: 65px;
     font-size: 2.2vw;
     font-family: monospace;
     vertical-align: middle;
-    line-height: 80px;
-    background-color: rgb(252,181,73);
+    line-height: 60px;
+    background-color: rgb(252, 181, 73);
     border-bottom-width: 2px;
     color: rgb(255 255 255);
     position: sticky;
     z-index: 100;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
-.side{
+.subheading {
+    width: 100%;
+    height: 20px;
+    font-family: monospace;
+    background-color: rgb(253, 194, 105);
+    border-bottom-width: 2px;
+    color: rgb(255 255 255);
+    border-radius: 15px;
+    height: 45px;
+    margin-top: 5px;
+    line-height: 47px;
+}
+
+.side {
     font-family: Verdana;
     text-align: center;
     margin-top: 50px;
     width: 44%;
     position: fixed;
     padding: 2px;
-    background-color: rgb(252,181,73);
+    background-color: rgb(252, 181, 73);
     border-radius: 35px;
 }
 
+.leftsittingbutton {
+    background-color: rgb(253, 194, 105);
+    color: rgb(255 255 255);
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.rightsittingbutton {
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
+    position: relative;
+    float: right;
+    top: 6px;
+    right: 5px;
+}
+
 .background {
-    background-image: url('basic-background.avif');
+    background-image: url('basic-background.png');
     background-size: 100%;
 }
 
@@ -37,3 +68,37 @@
     padding: 2px;
 }
 
+.typingBox {
+    width: 70%;
+    height: 50%;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: rgb(253, 194, 105);
+    background-color: rgb(240, 240, 240);
+    border-width: 2px;
+    margin: auto;
+    color: black;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.inputBox {
+    width: 30%;
+    height: 50px;
+    border-radius: 15px;
+    border-color: rgb(253, 194, 105);
+    border-width: 1px;
+    margin: auto;
+    color: rgb(136, 136, 136);
+    display: flex;
+}
+
+.basicWord {
+    font-size: 2.2vw;
+    height: 15px;
+    color: rgb(58, 58, 58);
+    font-family: sans-serif;
+    margin: 5px;
+}
