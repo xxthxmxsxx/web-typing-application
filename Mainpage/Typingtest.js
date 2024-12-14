@@ -5,6 +5,8 @@ var timerHasStarted = false;
 var startTime = 0;
 var endTime = 0;
 var timeTaken = 0;
+var submittable = false;
+var score = 0.0;
 
 const input = document.getElementById("enterBox");
 input.addEventListener("keydown", textBoxPress);
@@ -24,7 +26,7 @@ function wordRecolour(wordEntered, word) {
     }
 }
 
-function textBoxPress(x) {
+function textBoxPress(keyPressEvent) {
     if (wordindex == 30) {
         alert("Typing test ended");
         return;
@@ -33,10 +35,10 @@ function textBoxPress(x) {
         startTime = seconds;
         timerHasStarted = true;
     }
-    intercal = setInterval
+    interval = setInterval
     const word = document.getElementById(wordindex);
     var wordEntered = document.getElementById("enterBox").value.trim();
-    if (x.key == " ") {
+    if (keyPressEvent.key == " ") {
         wordRecolour(wordEntered, word);
         document.getElementById("enterBox").value = "";
         wordindex++;
@@ -45,10 +47,26 @@ function textBoxPress(x) {
         } else {
             endTime = seconds;
             timerHasStarted = false;
+            submittable = true;
             timeTaken = endTime - startTime;
+            score = correct/(timeTaken/60)
         }
 
     }
 }
 
+function submitTest() {
+    if (!submittable) {
+        alert("Cannot be submitted");
+        return;
+    }
+    submittable = false;
+    console.log(timeTaken)
+    console.log(score)
+    var dataToSend = "timeTaken=" + encodeURIComponent(timeTaken) + "&score=" + encodeURIComponent(score);
+    var request = new XMLHttpRequest();
+    request.open("POST", "Typingtest.php", true); // try delete true? if not, it's probably async
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(dataToSend);
+}
 

@@ -1,5 +1,11 @@
 <?php
 include '../conn.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $timeTaken = $_POST['timeTaken'];
+    $score = $_POST['score'];
+}
+
+
 $myfile = fopen("wordlist.txt", "r");
 $content = fread($myfile, filesize("wordlist.txt"));
 fclose($myfile);
@@ -47,6 +53,7 @@ foreach ($testWords as $singleWord) {
             <br>
             <p>Score:</p>
             <input class="inputBox" type="text" id="enterBox" placeholder="Type to start">
+            <button onclick="submitTest()">Submit Test</button>
         </div>
     </div>
     <div class="typingBox">
