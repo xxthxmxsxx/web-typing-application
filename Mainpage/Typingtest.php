@@ -12,7 +12,7 @@ for ($x = 0; $x <= 29; $x++) {
 $htmlList = array();
 $IDValue = 0;
 foreach ($testWords as $singleWord) {
-    $html = '<div class ="basicWord"><p id='.$IDValue.'>' . $singleWord . '</p></div>';
+    $html = '<div class ="basicWord" id=' . $IDValue .'>' . $singleWord . '</div>';
     $htmlList[] = $html;
     $IDValue = $IDValue + 1;
 }
@@ -45,10 +45,8 @@ foreach ($testWords as $singleWord) {
     <div>
         <div>
             <br>
-            <p>Score:
-            <p>
-                <br><br>
-                <input class="inputBox" type="text" id="enterBox" onfocus="this.value=''" value="Click to start">
+            <p>Score:</p>
+            <input class="inputBox" type="text" id="enterBox" placeholder="Type to start">
         </div>
     </div>
     <div class="typingBox">

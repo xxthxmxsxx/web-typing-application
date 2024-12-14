@@ -1,17 +1,9 @@
-// function getWords() {
-//     var wordlist = [];
-//     var fs = required('fs');
-//     fs.readFile("wordlst.txt", (err, fileContent));
-//     var splitFile = fileContent.split(' ');
-//     for (let x = 0; i < 31; x++) {
-//         var word = splitFile[Math.floor(Math.random() * splitFile.length)];
-//         wordlist.push(word);
-//     } 
-//     return wordlist;
-// }
+var wordindex = 0;
+var incorrect = 0;
+var correct = 0;
 
-//document.getElementById("wordTestSet").innerHTML = getWords();
-
-function beginTypingtest(this){
-    this.value ="";
+const input = document.getElementById("enterBox");
+input.addEventListener("keydown",textBoxPress);
+function textBoxPress(x) {
+    console.log(x.key);
 }
