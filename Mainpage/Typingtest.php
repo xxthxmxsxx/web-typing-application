@@ -1,5 +1,11 @@
 <?php
 include '../conn.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $timeTaken = $_POST['timeTaken'];
+    $score = $_POST['score'];
+}
+
+
 $myfile = fopen("wordlist.txt", "r");
 $content = fread($myfile, filesize("wordlist.txt"));
 fclose($myfile);
@@ -12,7 +18,7 @@ for ($x = 0; $x <= 29; $x++) {
 $htmlList = array();
 $IDValue = 0;
 foreach ($testWords as $singleWord) {
-    $html = '<div class ="basicWord"><p id='.$IDValue.'>' . $singleWord . '</p></div>';
+    $html = '<div class ="basicWord" id=' . $IDValue . '>' . $singleWord . '</div>';
     $htmlList[] = $html;
     $IDValue = $IDValue + 1;
 }
@@ -45,10 +51,9 @@ foreach ($testWords as $singleWord) {
     <div>
         <div>
             <br>
-            <p>Score:
-            <p>
-                <br><br>
-                <input class="inputBox" type="text" id="enterBox" onfocus="this.value=''" value="Click to start">
+            <p>Score:</p>
+            <input class="inputBox" type="text" id="enterBox" placeholder="Type to start">
+            <button onclick="submitTest()">Submit Test</button>
         </div>
     </div>
     <div class="typingBox">
