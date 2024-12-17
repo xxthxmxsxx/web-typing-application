@@ -1,12 +1,11 @@
 <?php
+ob_start(); 
 include '../conn.php';
-session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $salt = "ComplexSaltingIsOccuring";
     $hashed_password = hash('sha512', $password . $salt);
-
     $usernameSQL = "SELECT * FROM AccountDB WHERE username = '$username'";
     $exists = $conn->query($usernameSQL);
     if ($exists->num_rows > 0) {
@@ -14,9 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $conn->query("UPDATE AccountDB SET counter = 0 WHERE username = '$username'");
-            $fetchID = ($conn->query("SELECT ID FROM AccountDB WHERE username='$username'"))->fetch_assoc();
-            $_SESSION['UserID'] = $fetchID['ID'];
-            header("Location: ../Mainpage/Typingtest.php");
+          	session_start();
+            $fetchInfo = $result->fetch_assoc();
+            $_SESSION['UserID'] = $fetchInfo['ID'];
+            header('Location:../Mainpage/Typingtest.php');
             exit;
         } else {
             echo "<script>alert('These credentials are no longer valid, too many attempts will result in the account being disabled');</script>";
@@ -33,8 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
 <html>
 
 <head>
