@@ -1,5 +1,6 @@
 <?php
 include '../conn.php';
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -13,7 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $conn->query("UPDATE AccountDB SET counter = 0 WHERE username = '$username'");
-            header("Location: https://www.ghscomputerscience.co.uk/Tom/Mainpage/Typingtest.php");
+            $fetchID = ($conn->query("SELECT ID FROM AccountDB WHERE username='$username'"))->fetch_assoc();
+            $_SESSION['UserID'] = $fetchID['ID'];
+            header("Location: ../Mainpage/Typingtest.php");
             exit;
         } else {
             echo "<script>alert('These credentials are no longer valid, too many attempts will result in the account being disabled');</script>";
