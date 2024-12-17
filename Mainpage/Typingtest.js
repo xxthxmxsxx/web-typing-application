@@ -49,7 +49,7 @@ function textBoxPress(keyPressEvent) {
             timerHasStarted = false;
             submittable = true;
             timeTaken = endTime - startTime;
-            score = correct/(timeTaken/60)
+            score = correct / (timeTaken / 60)
         }
 
     }

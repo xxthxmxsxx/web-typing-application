@@ -18,7 +18,7 @@ for ($x = 0; $x <= 29; $x++) {
 $htmlList = array();
 $IDValue = 0;
 foreach ($testWords as $singleWord) {
-    $html = '<div class ="basicWord" id=' . $IDValue .'>' . $singleWord . '</div>';
+    $html = '<div class ="basicWord" id=' . $IDValue . '>' . $singleWord . '</div>';
     $htmlList[] = $html;
     $IDValue = $IDValue + 1;
 }
