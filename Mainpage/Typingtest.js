@@ -7,6 +7,8 @@ var endTime = 0;
 var timeTaken = 0;
 var submittable = false;
 var score = 0.0;
+var submittable = false;
+var score = 0.0;
 
 const input = document.getElementById("enterBox");
 input.addEventListener("keydown", textBoxPress);
@@ -61,8 +63,6 @@ function submitTest() {
         return;
     }
     submittable = false;
-    console.log(timeTaken)
-    console.log(score)
     var dataToSend = "timeTaken=" + encodeURIComponent(timeTaken) + "&score=" + encodeURIComponent(score);
     var request = new XMLHttpRequest();
     request.open("POST", "Typingtest.php", true); // try delete true? if not, it's probably async
