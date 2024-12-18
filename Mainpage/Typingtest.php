@@ -1,10 +1,26 @@
 <?php
 include '../conn.php';
 session_start();
-echo $_SESSION['UserID'];
+print_r($_SESSION);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $timeTaken = $_POST['timeTaken'];
     $score = $_POST['score'];
+    $ID = $_SESSION['UserID'];
+
+    $sql = "SELECT * FROM AccountDB WHERE ID = '$ID']";
+    $result = $conn->query($sql);
+    $fetchInfo = $result->fetch_assoc();
+
+    $wordsTyped = $fetchInfo['totalWords'] + 30;
+    $totalTime = $fetchInfo['totalTime'] + $timeTaken;
+    $avgScore = $wordsTyped/($totalTime/60);
+    $date = date("Y-m-d");
+    $personalBest = $fetchInfo['topScore'];
+    if ($personalBest > $score) {
+        $personalBest = $score;
+    }
+    $conn->query("UPDATE AccountDB SET (totalWords,totalTime,averageScore,topScore) = ('$wordsTyped','$totalTime','$avgScore','$personalBest') WHERE ID = '$ID'");
+    $conn->query("INSERT INTO HistoryDB (score,dateOfAttempt) VALUES ('$score', '$date')");
 }
 
 
@@ -43,7 +59,7 @@ foreach ($testWords as $singleWord) {
         <a class="leftsittingbutton" href="">
             <button id="Stats">Stats</button>
         </a>
-        <a class="rightsittingbutton" href="https://www.ghscomputerscience.co.uk/Tom/LoginRegister/login.php">
+        <a class="rightsittingbutton"  href="https://www.ghscomputerscience.co.uk/Tom/LoginRegister/login.php">
             <button id="LogOut">Log Out</button>
         </a>
         <a class="rightsittingbutton" href="https://www.ghscomputerscience.co.uk/Tom/Mainpage/Typingtest.php">
@@ -53,7 +69,9 @@ foreach ($testWords as $singleWord) {
     <div>
         <div>
             <br>
-            <p>Score:</p>
+            <p>Score:<?php
+            echo $score;
+            ?></p>
             <input class="inputBox" type="text" id="enterBox" placeholder="Type to start">
             <button onclick="submitTest()">Submit Test</button>
         </div>

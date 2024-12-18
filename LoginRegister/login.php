@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_destroy();
 ob_start(); 
 include '../conn.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,9 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="Submit" value="submit">
         </form>
         <div class="side" style="left: 5%;">
-            <p>Already have an account?</p>
+            <p>Don't have an account?</p>
             <a href="https://www.ghscomputerscience.co.uk/Tom/LoginRegister/register.php">
-                <button id="sumbitLogin">Login here</button>
+                <button id="sumbitRegister">Register now</button>
             </a>
         </div>
     </div>

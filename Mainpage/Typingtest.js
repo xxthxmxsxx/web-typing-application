@@ -65,7 +65,7 @@ function submitTest() {
     submittable = false;
     var dataToSend = "timeTaken=" + encodeURIComponent(timeTaken) + "&score=" + encodeURIComponent(score);
     var request = new XMLHttpRequest();
-    request.open("POST", "Typingtest.php", true); // try delete true? if not, it's probably async
+    request.open("POST", "Typingtest.php", true); 
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send(dataToSend);
 }
