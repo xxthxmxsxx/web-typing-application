@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_destroy();
-ob_start(); 
+session_unset();
+ob_start();
 include '../conn.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -15,10 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $conn->query("UPDATE AccountDB SET counter = 0 WHERE username = '$username'");
-          	session_start();
             $fetchInfo = $result->fetch_assoc();
-            $_SESSION['UserID'] = $fetchInfo['ID'];
             header('Location:../Mainpage/Typingtest.php');
+            $_SESSION['UserID'] = $fetchInfo['ID'];
             exit;
         } else {
             echo "<script>alert('These credentials are no longer valid, too many attempts will result in the account being disabled');</script>";

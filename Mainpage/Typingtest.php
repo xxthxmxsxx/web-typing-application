@@ -1,7 +1,6 @@
 <?php
-include '../conn.php';
 session_start();
-print_r($_SESSION);
+include '../conn.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $timeTaken = $_POST['timeTaken'];
     $score = $_POST['score'];
