@@ -6,19 +6,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $score = $_POST['score'];
     $ID = $_SESSION['UserID'];
 
-    $sql = "SELECT * FROM AccountDB WHERE ID = '$ID']";
+    $sql = "SELECT * FROM AccountDB WHERE ID = '$ID'";
     $result = $conn->query($sql);
     $fetchInfo = $result->fetch_assoc();
 
-    $wordsTyped = $fetchInfo['totalWords'] + 30;
+    $wordsTyped = $fetchInfo['totalWords'] + ($score*($timeTaken/60));
     $totalTime = $fetchInfo['totalTime'] + $timeTaken;
-    $avgScore = $wordsTyped/($totalTime/60);
+    $avgScore = round($wordsTyped/($totalTime/60), 2);
     $date = date("Y-m-d");
     $personalBest = $fetchInfo['topScore'];
     if ($personalBest > $score) {
         $personalBest = $score;
     }
-    $conn->query("UPDATE AccountDB SET (totalWords,totalTime,averageScore,topScore) = ('$wordsTyped','$totalTime','$avgScore','$personalBest') WHERE ID = '$ID'");
+    $conn->query("UPDATE AccountDB SET totalWords = '$wordsTyped', totalTime = '$totalTime', averageScore = '$avgScore', topScore = '$personalBest' WHERE ID = '$ID'");
     $conn->query("INSERT INTO HistoryDB (score,dateOfAttempt,ID) VALUES ('$score', '$date','$ID')");
 }
 
