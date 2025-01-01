@@ -35,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $sql = "INSERT INTO AccountDB (username, password, consent) VALUES ('$username', '$hashed_password',true)";
         $conn->query($sql);
+        $credentials = ($conn->query("SELECT * FROM AccountDB WHERE username = '$username'"))->fetch_assoc();
+        $newID = $credentials['ID'];
+        $conn->query("INSERT INTO RoleAssignmentDB (ID, roleID) VALUES ('$newID',1)");
         echo "<script>alert('Account added successfully');</script>";
     }
 }

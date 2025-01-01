@@ -62,6 +62,7 @@ function submitTest() {
         alert("Cannot be submitted");
         return;
     }
+    alert("Test submitted")
     submittable = false;
     var dataToSend = "timeTaken=" + encodeURIComponent(timeTaken) + "&score=" + encodeURIComponent(score);
     var request = new XMLHttpRequest();

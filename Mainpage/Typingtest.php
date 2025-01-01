@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $personalBest = $score;
     }
     $conn->query("UPDATE AccountDB SET (totalWords,totalTime,averageScore,topScore) = ('$wordsTyped','$totalTime','$avgScore','$personalBest') WHERE ID = '$ID'");
-    $conn->query("INSERT INTO HistoryDB (score,dateOfAttempt) VALUES ('$score', '$date')");
+    $conn->query("INSERT INTO HistoryDB (score,dateOfAttempt,ID) VALUES ('$score', '$date','$ID')");
 }
 
 

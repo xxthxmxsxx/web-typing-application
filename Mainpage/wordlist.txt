@@ -175,7 +175,7 @@ computer
 concern
 condition
 conference
-Congress
+congress
 consider
 consumer
 contain
@@ -210,7 +210,7 @@ decision
 deep
 defense
 degree
-Democrat
+democrat
 democratic
 describe
 design
@@ -533,8 +533,8 @@ mouth
 move
 movement
 movie
-Mr
-Mrs
+mr
+mrs
 much
 music
 must
@@ -711,7 +711,7 @@ remember
 remove
 report
 represent
-Republican
+republican
 require
 research
 resource
