@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $avgScore = round($wordsTyped/($totalTime/60), 2);
     $date = date("Y-m-d");
     $personalBest = $fetchInfo['topScore'];
-    if ($personalBest > $score) {
+    if ($personalBest < $score) {
         $personalBest = $score;
     }
     $conn->query("UPDATE AccountDB SET totalWords = '$wordsTyped', totalTime = '$totalTime', averageScore = '$avgScore', topScore = '$personalBest' WHERE ID = '$ID'");
@@ -52,25 +52,23 @@ foreach ($testWords as $singleWord) {
         <h1>Thometheus Typing</h1>
     </div>
     <div class="subheading">
-        <a class="leftsittingbutton" href="">
+        <a class="leftsittingbutton" href="https://www.ghscomputerscience.co.uk/Tom/ProfileStats/profile.php">
             <button id="Profile">Profile</button>
         </a>
-        <a class="leftsittingbutton" href="">
+        <a class="leftsittingbutton" href="https://www.ghscomputerscience.co.uk/Tom/ProfileStats/stats.php">
             <button id="Stats">Stats</button>
         </a>
         <a class="rightsittingbutton"  href="https://www.ghscomputerscience.co.uk/Tom/LoginRegister/login.php">
             <button id="LogOut">Log Out</button>
         </a>
-        <a class="rightsittingbutton" href="https://www.ghscomputerscience.co.uk/Tom/Mainpage/Typingtest.php">
+        <a class="rightsittingbutton" href="https://www.ghscomputerscience.co.uk/Tom/Mainpage/typingtest.php">
             <button id="Home">Home</button>
         </a>
     </div>
     <div>
         <div>
             <br>
-            <p>Score:<?php
-            echo $score;
-            ?></p>
+            <p>Score:</p>
             <input class="inputBox" type="text" id="enterBox" placeholder="Type to start">
             <button onclick="submitTest()">Submit Test</button>
         </div>
@@ -79,7 +77,7 @@ foreach ($testWords as $singleWord) {
         <?php
         for ($x = 0; $x <= 29; $x++) {
             echo $htmlList[$x];
-        } ?></p>
+        } ?>
     </div>
 
 </body>
