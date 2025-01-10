@@ -2,6 +2,10 @@
 session_start();
 include '../conn.php';
 $ID = $_SESSION['UserID'];
+$info = ($conn->query("SELECT * FROM AccountDB WHERE ID = '$ID'"))->fetch_assoc();
+$username = $info['username'];
+$welcomeheader = "<p class='helloText'>Hello ".$username."! Lets check your progress</p>";
+
 ?>
 <html>
 
@@ -28,8 +32,24 @@ $ID = $_SESSION['UserID'];
         </a>
     </div>
     <div>
-        <div>
-
+        <?php
+        echo $welcomeheader;
+        ?>
+    </div>
+    <div>
+        <div class="side" style="left: 4%;">
+            <p>otherside</p>
+        </div>
+        <div class="boxGrouping">
+            <div class="infoBox">
+                <p>box1</p>
+            </div>
+            <div class="infoBox">
+                <p>box2</p>
+            </div>
+            <div class="infoBox">
+                <p>box3</p>
+            </div>
         </div>
     </div>
 

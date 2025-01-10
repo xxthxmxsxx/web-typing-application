@@ -83,4 +83,4 @@ foreach ($testWords as $singleWord) {
 </body>
 
 </html>
-<script src="Typingtest.js"></script>
+<script src="typingtest.js"></script>

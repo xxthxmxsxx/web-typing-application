@@ -66,7 +66,7 @@ function submitTest() {
     submittable = false;
     var dataToSend = "timeTaken=" + encodeURIComponent(timeTaken) + "&score=" + encodeURIComponent(score);
     var request = new XMLHttpRequest();
-    request.open("POST", "Typingtest.php", true); 
+    request.open("POST", "typingtest.php", true); 
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send(dataToSend);
 }
