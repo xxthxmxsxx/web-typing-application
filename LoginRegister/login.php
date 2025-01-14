@@ -7,11 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $salt = "ComplexSaltingIsOccuring";
-    $hashed_password = hash('sha512', $password . $salt);
-    $usernameSQL = "SELECT * FROM AccountDB WHERE username = '$username'";
-    $exists = $conn->query($usernameSQL);
+    $hashedPassword = hash('sha512', $password . $salt);
+
+    $exists = $conn->query("SELECT * FROM AccountDB WHERE username = '$username'");
     if ($exists->num_rows > 0) {
-        $sql = "SELECT * FROM AccountDB WHERE username = '$username' AND password = '$hashed_password' AND enabled = true";
+        $sql = "SELECT * FROM AccountDB WHERE username = '$username' AND password = '$hashedPassword' AND enabled = true";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $conn->query("UPDATE AccountDB SET counter = 0 WHERE username = '$username'");

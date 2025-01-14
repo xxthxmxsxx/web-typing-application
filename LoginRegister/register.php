@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Cannot make account without consent');</script>";
     } elseif ($result->num_rows > 0) {
         echo "<script>alert('This username already exists, please enter a different one');</script>";
-    } elseif (strlen($password) < 8 && $containCapital != true && $containNum != true) {
+    } elseif (strlen($password) < 8 || $containCapital != true || $containNum != true) {
         echo "<script>alert('Password does not meet standards');</script>";
     } else {
         $sql = "INSERT INTO AccountDB (username, password, consent) VALUES ('$username', '$hashed_password',true)";
