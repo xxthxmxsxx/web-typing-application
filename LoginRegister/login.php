@@ -11,13 +11,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $exists = $conn->query("SELECT * FROM AccountDB WHERE username = '$username'");
     if ($exists->num_rows > 0) {
-        $sql = "SELECT * FROM AccountDB WHERE username = '$username' AND password = '$hashedPassword' AND enabled = true";
-        $result = $conn->query($sql);
+        $result = $conn->query("SELECT * FROM AccountDB WHERE username = '$username' AND password = '$hashedPassword' AND enabled = true");
         if ($result->num_rows > 0) {
             $conn->query("UPDATE AccountDB SET counter = 0 WHERE username = '$username'");
             $fetchInfo = $result->fetch_assoc();
-            header('Location:../Mainpage/Typingtest.php');
-            $_SESSION['UserID'] = $fetchInfo['ID'];
+            $userID = $fetchInfo['ID'];
+            $adminFound = $conn->query("SELECT * FROM RoleAssignmentDB WHERE ID='$userID' AND RoleID = '2'");
+            if ($adminFound->num_rows > 0) {
+                header('Location:../Admin/adminpage.php');
+            } else {
+                header('Location:../Mainpage/Typingtest.php');
+            }
+            $_SESSION['UserID'] = $userID;
             exit;
         } else {
             echo "<script>alert('These credentials are no longer valid, too many attempts will result in the account being disabled');</script>";

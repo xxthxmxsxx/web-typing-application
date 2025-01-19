@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $info = ($conn->query("SELECT * FROM AccountDB WHERE ID = '$ID'"))->fetch_assoc();
+
 $welcomeheader = "<p class='helloText'>Hello " . $info['username'] . "! Lets check your progress</p>";
 $avgScore = "<p>Average: " . $info['averageScore'] . "WPM</p>";
 $topScore = "<p>Highscore: " . $info['topScore'] . "WPM</p>";
