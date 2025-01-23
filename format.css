@@ -113,14 +113,14 @@
 
 .infoBox {
     font-family: Verdana;
-    margin-top: 10px;
+    margin-top: 5%;
     width: 15%;
     height: 15%;
-    padding: 40px;
+    padding: 10px;
     background-color: rgb(252, 181, 73);
     border-radius: 35px;
-    right: 60%;
     text-align: center;
+    position: fixed;
 }
 
 .boxGrouping {
@@ -130,4 +130,27 @@
     padding: 2px;
     right: 4%;
     flex-direction: column;
+}
+
+.adminSettingsBox {
+    width: 45%;
+    left: 5%;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: rgb(62, 59, 255);
+    background-color: rgb(240, 240, 240);
+    border-width: 2px;
+    color: black;
+    padding: 5px;
+    text-align: left;
+}
+
+.adminSubmit {
+    width: 45%;
+    right: 5%;
+    color: rgb(0, 68, 79);
+    padding: 5px;
+    text-align: center;
+    position: fixed;
+    top: 30%;
 }
